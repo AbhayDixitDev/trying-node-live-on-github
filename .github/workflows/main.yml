@@ -25,6 +25,11 @@ jobs:
         run: npm test
 
       - name: Deploy to server
+        env:
+          PORT: ${{ secrets.PORT }}
+          DB_URL: ${{ secrets.DB_URL }}
+          STRIPE_SECRET_KEY: ${{ secrets.STRIPE_SECRET_KEY }}
+          CLIENT_URL: ${{ secrets.CLIENT_URL }}
         uses: appleboy/scp-action@master
         with:
           host: ${{ secrets.HOST }}
